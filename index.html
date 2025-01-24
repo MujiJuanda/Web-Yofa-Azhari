@@ -1,194 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>When Everything is about Yofa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Yofa Azhari</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      background-image: url('../Web Yofa/images/Minecraftview.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- AOS CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-section {
+      flex: 1.2; /* Sedikit lebih besar dari form */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-section img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 12px solid #f8f9fa; /* Warna bingkai putih atau pastel */
+      border-radius: 20px; /* Sudut melengkung */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bayangan lembut */
+      transition: transform 0.3s ease; /* Efek saat gambar berganti */
+    }
+
+    .image-section img:hover {
+      transform: scale(1.05); /* Zoom saat dihover */
+    }
+
+    .form-section {
+      flex: 0.8; /* Sedikit lebih kecil dari image */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      position: relative; /* Untuk menempatkan elemen lain di atas form */
+    }
+
+    .login-box {
+      background: rgb(0, 255, 191);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(5, 125, 141, 0.1);
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+      position: relative;
+      z-index: 2; /* Memastikan login box di atas gambar Goku */
+    }
+
+    .goku-image {
+      position: absolute;
+      top: -60px; /* Menempatkan gambar di atas login box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px; /* Ukuran gambar */
+      height: auto;
+      z-index: 1; /* Memastikan gambar Goku di bawah login box */
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .login-box input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 15px;
+    }
+
+    .login-box button {
+      width: 60%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .login-box button:hover {
+      background: #0056b3;
+    }
+
+    .forget-link {
+      color: #0004ff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .forget-link:hover {
+      text-decoration: underline;
+      color: #0056b3;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #2a2a38;
+      margin-top: 1px; /* Adjusted to make it closer to the input */
+      text-align: left;
+      width: 80%; /* Match input width */
+      margin-left: 10%; /* Center align under the input */
+    }
+    .note-style {
+      color: #0004ff;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .note-style:hover::before {
+      content: "Tgl Bulan Tahun";
+      position: absolute;
+      top: -25px; /* Adjust position to appear above the text */
+      left: 50%;
+      transform: translateX(-50%);
+      background: #f0f0f0;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
+      font-size: 12px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <script>
-        // Tanggal awal persahabatan
-        const startDate = new Date("2019-08-05T07:00:00");
-        
-        // Fungsi untuk menghitung dan menampilkan waktu berjalan
-        function updateCounter() {
-            const now = new Date();
-            const elapsed = now - startDate; // Selisih waktu dalam milidetik
+  <div class="container">
+    <!-- Left Section for Image -->
+    <div class="image-section">
+      <img src="../Web Yofa/images/Minecrafthouse.jpeg" alt="Minecraft Background">
+    </div>
 
-            // Konversi ke hari, jam, menit, dan detik
-            const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
-            const seconds = Math.floor((elapsed / 1000) % 60);
-
-            // Tampilkan waktu berjalan
-            document.getElementById("counter").textContent = 
-                `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
-        }
-
-        // Jalankan updateCounter setiap detik
-        setInterval(updateCounter, 1000);
-    </script>
-
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Yofa Azhari</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#kenangan">Kenangan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Menu</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
-    <!-- Tambahkan Elemen Overlay -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Yofa Azhari</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#kenangan">Kenangan</a></li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="#" id="menuLink">Menu</a>
-                        <!-- Overlay Dropdown -->
-                        <div id="menuOverlay" class="overlay-menu">
-                            <ul>
-                                <li><a href="#kenangan">Kenangan</a></li>
-                                <li><a href="#friendship-timer">Timeline Persahabatan</a></li>
-                                <li><a href="#photos">Permainan</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-    <!-- Tambahkan atribut pada menu untuk memicu modal -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Yofa Azhari</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#kenangan">Kenangan</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#menuModal">Menu</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
-    <header class="text-center">
-        <h1>Selamat Datang Sahabat ku Yofa</h1>
-<!--         <p>"</p> -->
-    </header>
-
-    <main class="container my-5">
-        <!-- Sambutan -->
-        <section id="friendship-timer" class="text-center my-5">
-            <h2>Timeline Persahabatan</h2>
-            <p>Muji dan Yofa telah bersahabat selama:</p>
-            <h3 id="counter" style="font-weight: bold;"></h3>
-            <p style="font-weight: bold;">05 Agustus 2019 Senin 07:25:52</p>
-            <h3 style="font-weight: bold;">SMKN 1 ACEH BARAT DAYA </h3>
-        </section>
-
-        <section id="kenangan" class="text-center mb-5">
-            <h2>Kenangan Bersama</h2>
-            <p>Yofa adalah  .</p>
-        </section>
-
-
-        <!-- Carousel Section -->
-        <section id="photos" class="mb-5">
-            <h2 class="text-center mb-4">Permainan</h2>
-            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="images/Minecraft.jpeg" class="img-fluid rounded" alt="Minecraft">
-                        <div class="carousel-caption d-none d-md-block">
-                            <p>Minecraft</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/ben10.jpeg" class="img-fluid rounded" alt="Ben 10">
-                        <div class="carousel-caption d-none d-md-block">
-                            <p>Ben 10</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/Plant vs zombie.jpeg" class="img-fluid rounded" alt="Plants vs Zombie">
-                        <div class="carousel-caption d-none d-md-block">
-                            <p>Plants vs Zombie</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
-
-        
-    </main>
-
-    <footer class="bg-dark text-white text-center py-3">
-         <p>Yofa Azhari</p>
-    </footer>    
-
-    <script>
-        // Ambil elemen menu dan overlay
-        const menuLink = document.getElementById('menuLink');
-        const menuOverlay = document.getElementById('menuOverlay');
-    
-        // Toggle overlay saat menu diklik
-        menuLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah redirect
-            if (menuOverlay.style.display === "none" || menuOverlay.style.display === "") {
-                menuOverlay.style.display = "block";
-            } else {
-                menuOverlay.style.display = "none";
-            }
-        });
-    
-        // Tutup overlay jika klik di luar
-        document.addEventListener('click', (e) => {
-            if (!menuOverlay.contains(e.target) && e.target !== menuLink) {
-                menuOverlay.style.display = "none";
-            }
-        });
-    </script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    <!-- Right Section for Form -->
+    <div class="form-section">
+      <div class="login-box">
+        <img src="../Web Yofa/images/goku.png" alt="Goku" class="goku-image">
+        <h2>Selamat Datang Sahabatku Yofa</h2>
+        <input type="nama" placeholder="Masukkan Nama Lengkap Yofa" required>
+        <input type="tgl_lahir" placeholder="Masukkan Tgl Lahir Yofa" required>
+        <div class="note">Format penulisan yang benar: <a class="note-style">12 Januari 1234</a></div>
+        <button>Masuk</button>
+        <p style="margin-top: 10px;">
+          Lupa nama sahabatku? <a href="opsimasuk.html" class="forget-link">Ubah cara masuk</a>
+        </p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
